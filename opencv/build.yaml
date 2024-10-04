@@ -1,0 +1,14 @@
+---
+env:
+  REGISTRY: swtec
+  TAG: 3.12
+
+functions:
+  - name: build
+    run:
+      - docker build -t ${REGISTRY}/opencv:${TAG} .
+
+  - name: push
+    run:
+      - docker buildx build --platform linux/amd64,linux/arm64 --push -t ${REGISTRY}/opencv:${TAG} .
+...
