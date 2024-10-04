@@ -12,3 +12,7 @@ This Docker image is designed to provide a lightweight and efficient environment
 - **Computer Vision**: Real-time image processing, object detection, and facial recognition.
 - **Deep Learning**: Training and deploying neural networks for tasks such as image classification, segmentation, and generation.
 - **Research and Prototyping**: Quick setup for experiments and prototype development in machine learning and image processing.
+
+#### Testing the image:
+
+To test the image [see here](test/readme.md).
