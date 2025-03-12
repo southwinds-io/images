@@ -1,0 +1,18 @@
+FROM nvidia/cuda:12.8.0-cudnn-runtime-rockylinux9
+
+ENV PYTHONUNBUFFERED=1 \
+    PIP_NO_CACHE_DIR=1
+
+LABEL org.label-schema.name="Southwinds Tec Ltd" \
+      org.label-schema.url="https://www.southwinds.ai" \
+      org.label-schema.version="12.8.0-cudnn-runtime-rockylinux9" \
+      org.label-schema.maintainer="skipper <skipper@southwinds.io>" \
+      org.label-schema.description="This image contains OpenCV and additional tools for image processing."
+
+## Install necessary dependencies
+RUN yum update -y && yum install -y python3-pip && pip install --upgrade pip
+
+COPY requirements.txt ./
+
+# Install Python dependencies
+RUN pip install --no-cache-dir -r requirements.txt

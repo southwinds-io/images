@@ -8,7 +8,19 @@ functions:
     run:
       - docker build -t ${REGISTRY}/opencv:${TAG} .
 
+  - name: build-cuda
+    env:
+      TAG: r9-cuda-12.8.0
+    run:
+      - docker build -f Dockerfile-cuda -t ${REGISTRY}/opencv:${TAG} .
+
   - name: push
+    run:
+      - docker buildx build --platform linux/amd64,linux/arm64 --push -t ${REGISTRY}/opencv:${TAG} .
+
+  - name: push-cuda
+    env:
+      TAG: r9-cuda-12.8.0
     run:
       - docker buildx build --platform linux/amd64,linux/arm64 --push -t ${REGISTRY}/opencv:${TAG} .
 ...
